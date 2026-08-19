@@ -310,7 +310,22 @@
                 messages.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl rounded-tr-none text-slate-200 max-w-[85%]">${reply}</div>`;
                 messages.scrollTop = messages.scrollHeight;
             }, 600);
-        }
-    </script>
+ async function loadOffers() {
+  try {
+    // بيجيب البيانات اللي العميل دخلها عبر Pages CMS
+    const response = await fetch('./content/offers.json');
+    const offers = await response.json();
+    
+    // اعرض العروض جوة الصفحة تلقائياً
+    console.log("العروض الجديدة:", offers);
+    // هنا بتقدر تعمل loop وتطبع الرحلات في الـ HTML
+  } catch (error) {
+    console.log("لسه مفيش عروض اتضافت أو الملف مش موجود");
+  }
+}
+
+// load data
+loadOffers();
+</script>
 </body>
 </html>
