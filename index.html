@@ -1,331 +1,118 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nemo Tours - Luxury & Budget Travel</title>
-    <!-- Tailwind CSS & FontAwesome -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;800;900&family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            cyan: '#00f2fe',
-                            blue: '#4facfe',
-                            orange: '#ff5e62',
-                            yellow: '#ff9966',
-                            purple: '#7F00FF'
-                        }
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flynemoo - عروض الرحلات</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-orange': '#f97316',
+          }
         }
-    </script>
-    <style>
-        body { font-family: 'Tajawal', 'Poppins', sans-serif; transition: all 0.3s ease; }
-        .glass-nav { background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(16px); }
-        .gradient-text {
-            background: linear-gradient(135deg, #ff9966 0%, #ff5e62 50%, #00f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gradient-btn {
-            background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%);
-            box-shadow: 0 10px 25px -5px rgba(255, 94, 98, 0.5);
-        }
-        .gradient-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px -5px rgba(255, 94, 98, 0.7);
-        }
-        .chat-shadow { box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased selection:bg-brand-orange selection:text-white">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between">
 
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            
-            <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-orange via-brand-yellow to-brand-cyan p-0.5 shadow-lg shadow-brand-orange/30">
-                    <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center font-black text-2xl text-white">N</div>
-                </div>
-                <div>
-                    <span class="font-black text-2xl tracking-wide bg-gradient-to-r from-white via-slate-200 to-brand-cyan bg-clip-text text-transparent">NEMO TOURS</span>
-                    <span id="tagline" class="block text-[10px] text-brand-orange font-bold uppercase tracking-widest">ملوك الرحلات الاقتصادية</span>
-                </div>
-            </div>
-
-            <nav class="hidden md:flex items-center gap-8 text-sm font-bold">
-                <a href="#hero" id="nav-home" class="hover:text-brand-cyan transition-colors">الرئيسية</a>
-                <a href="#offers" id="nav-offers" class="hover:text-brand-cyan transition-colors">عروض الصيف</a>
-                <a href="#destinations" id="nav-destinations" class="hover:text-brand-cyan transition-colors">الوجهات</a>
-                <a href="#contact" id="nav-contact" class="hover:text-brand-cyan transition-colors">التواصل</a>
-            </nav>
-
-            <!-- Lang Switcher & CTA -->
-            <div class="flex items-center gap-3">
-                <div class="bg-slate-900 border border-slate-700 rounded-xl p-1 flex text-xs font-bold">
-                    <button onclick="setLanguage('ar')" id="btn-ar" class="px-2 py-1 rounded-lg bg-brand-orange text-white">AR</button>
-                    <button onclick="setLanguage('en')" id="btn-en" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white">EN</button>
-                    <button onclick="setLanguage('fr')" id="btn-fr" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white">FR</button>
-                </div>
-
-                <a href="https://wa.me/201006162892" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 gradient-btn text-white text-sm font-extrabold rounded-xl transition-all">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                    <span id="btn-whatsapp">حجز سريع</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero" class="relative pt-36 pb-24 md:pt-52 md:pb-36 overflow-hidden">
-        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-brand-orange/20 via-brand-cyan/20 to-brand-purple/20 blur-[140px] rounded-full -z-10"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-brand-orange/40 text-brand-yellow text-xs font-bold mb-8 shadow-inner">
-                <i data-lucide="star" class="w-4 h-4 fill-brand-yellow"></i>
-                <span id="hero-badge">تقييم 4.2/5 على Google - الخيار الأول للرحلات</span>
-            </span>
-            <h1 id="hero-title" class="text-4xl sm:text-6xl md:text-7xl font-black leading-tight mb-8">
-                عايز تسافر وتنبسط؟ <br>
-                <span class="gradient-text">نيمو تورز نزلّتك العروض!</span>
-            </h1>
-            <p id="hero-desc" class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-                ملوك شواطئ شرم الشيخ، الغردقة، دهب والساحل الشمالي. بأقل الأسعار وأفخم الفنادق الاقتصادية شاملة الوجبات والانتقالات.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#offers" id="hero-btn1" class="w-full sm:w-auto px-8 py-4 gradient-btn text-white font-black rounded-2xl transition-all text-center">
-                    استكشف أقوى العروض
-                </a>
-                <a href="tel:01006162892" id="hero-btn2" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl border border-slate-700 transition-all flex items-center justify-center gap-2">
-                    <i data-lucide="phone-call" class="w-5 h-5 text-brand-cyan"></i> اتصل بنا الآن
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offers Section -->
-    <section id="offers" class="py-20 max-w-7xl mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 id="offers-title" class="text-3xl md:text-5xl font-black mb-4">أقوى العروض الحصرية</h2>
-            <p id="offers-subtitle" class="text-slate-400">احجز مكانك في أقوى الفنادق بأسعار لا تقبل المنافسة</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Offer 1 -->
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden hover:border-brand-orange/50 transition-all group duration-300 hover:-translate-y-2">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute top-4 right-4 bg-brand-orange text-white font-black text-xs px-3 py-1.5 rounded-lg shadow-lg">4,300 EGP</div>
-                </div>
-                <div class="p-6">
-                    <h3 id="card1-title" class="text-xl font-bold mb-2">البحر الأحمر - 3 أيام / ليلتين</h3>
-                    <p id="card1-desc" class="text-slate-400 text-sm mb-6">فنادق متميزة شاملة وجبات الفطور والعشاء أوبن بوفيه واستخدام الشاطئ.</p>
-                    <a href="https://wa.me/201006162892" target="_blank" class="w-full py-3 bg-slate-800 group-hover:bg-brand-orange text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-colors">
-                        <span id="card-btn">احجز الآن</span> <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Offer 2 -->
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden hover:border-brand-cyan/50 transition-all group duration-300 hover:-translate-y-2">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute top-4 right-4 bg-brand-cyan text-slate-950 font-black text-xs px-3 py-1.5 rounded-lg shadow-lg">5,300 EGP</div>
-                </div>
-                <div class="p-6">
-                    <h3 id="card2-title" class="text-xl font-bold mb-2">دهب - إيكوتيل السي فيو</h3>
-                    <p id="card2-desc" class="text-slate-400 text-sm mb-6">غرف مطلة على البحر بالكامل، أفضل موقع للسنوركلينج وحمامات السباحة.</p>
-                    <a href="https://wa.me/201006162892" target="_blank" class="w-full py-3 bg-slate-800 group-hover:bg-brand-cyan group-hover:text-slate-950 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-colors">
-                        <span id="card-btn2">احجز الآن</span> <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Offer 3 -->
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden hover:border-brand-yellow/50 transition-all group duration-300 hover:-translate-y-2">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute top-4 right-4 bg-brand-yellow text-slate-950 font-black text-xs px-3 py-1.5 rounded-lg shadow-lg">4,750 EGP</div>
-                </div>
-                <div class="p-6">
-                    <h3 id="card3-title" class="text-xl font-bold mb-2">العين السخنة - Sea View</h3>
-                    <p id="card3-desc" class="text-slate-400 text-sm mb-6">أقرب شاطئ رملي للقاهرة، غرف مطلة على البحر والراحة الفائقة.</p>
-                    <a href="https://wa.me/201006162892" target="_blank" class="w-full py-3 bg-slate-800 group-hover:bg-brand-yellow group-hover:text-slate-950 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-colors">
-                        <span id="card-btn3">احجز الآن</span> <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Floating ChatBot Widget -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <!-- Chat Trigger Button -->
-        <button onclick="toggleChat()" class="w-16 h-16 rounded-full gradient-btn text-white flex items-center justify-center shadow-2xl relative group">
-            <i data-lucide="bot" class="w-8 h-8"></i>
-            <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-950"></span>
-        </button>
-
-        <!-- Chat Window -->
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[350px] sm:w-[380px] bg-slate-900 border border-slate-800 rounded-3xl chat-shadow overflow-hidden flex-col">
-            <div class="bg-gradient-to-r from-brand-orange to-brand-yellow p-4 flex items-center justify-between text-slate-950">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-slate-950 text-white flex items-center justify-center font-bold text-sm">N</div>
-                    <div>
-                        <h4 class="font-bold text-sm">مساعد نيمو الذكي</h4>
-                        <span class="text-[10px] font-semibold text-slate-800 block">متصل الآن لمساعدتك</span>
-                    </div>
-                </div>
-                <button onclick="toggleChat()" class="hover:opacity-70"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-
-            <div id="chat-messages" class="h-80 p-4 overflow-y-auto space-y-3 text-xs">
-                <div class="bg-slate-800 p-3 rounded-2xl rounded-tr-none text-slate-200 max-w-[85%]">
-                    أهلاً بك 👋 أنا مساعد Nemo Tours الذكي. كيف يمكنني مساعدتك اليوم؟
-                </div>
-            </div>
-
-            <div class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
-                <input id="chat-input" type="text" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-orange">
-                <button onclick="sendMessage()" class="gradient-btn px-3 rounded-xl text-white"><i data-lucide="send" class="w-4 h-4"></i></button>
-            </div>
-        </div>
+  <!-- Header -->
+  <header class="p-5 border-b border-slate-800 bg-slate-950/50 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-black text-brand-orange tracking-wider">FLYNEMOO</h1>
+      <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">لوحة التحكم نشطة</span>
     </div>
+  </header>
 
-    <!-- Contact & Footer -->
-    <footer id="contact" class="bg-slate-950 border-t border-slate-900 py-12 text-center text-slate-500 text-xs">
-        <p id="footer-text">©️ 2026 Nemo Tours - 78 شارع عبد السلام عارف، سابا باشا، الإسكندرية. هاتف: 01006162892</p>
-    </footer>
-
-    <script>
-        lucide.createIcons();
-
-        // Multi-language Dictionary
-        const i18n = {
-            ar: {
-                tagline: "ملوك الرحلات الاقتصادية",
-                navHome: "الرئيسية", navOffers: "عروض الصيف", navDest: "الوجهات", navContact: "التواصل",
-                btnWa: "حجز سريع",
-                heroBadge: "تقييم 4.2/5 على Google - الخيار الأول للرحلات",
-                heroTitle: 'عايز تسافر وتنبسط؟ <br><span class="gradient-text">نيمو تورز نزلّتك العروض!</span>',
-                heroDesc: "ملوك شواطئ شرم الشيخ، الغردقة، دهب والساحل الشمالي. بأقل الأسعار وأفخم الفنادق الاقتصادية شاملة الوجبات والانتقالات.",
-                heroBtn1: "استكشف أقوى العروض", heroBtn2: "اتصل بنا الآن",
-                offersTitle: "أقوى العروض الحصرية", offersSubtitle: "احجز مكانك في أقوى الفنادق بأسعار لا تقبل المنافسة",
-                cardBtn: "احجز الآن",
-                dir: "rtl"
-            },
-            en: {
-                tagline: "Kings of Budget Trips",
-                navHome: "Home", navOffers: "Summer Deals", navDest: "Destinations", navContact: "Contact",
-                btnWa: "Fast Book",
-                heroBadge: "4.2/5 Rated on Google - Top Travel Agency",
-                heroTitle: 'Wanna Travel & Enjoy? <br><span class="gradient-text">Nemo Tours Got You Covered!</span>',
-                heroDesc: "The kings of Sharm El-Sheikh, Hurghada, Dahab, and North Coast. Premium budget hotels with meals & transfers.",
-                heroBtn1: "Explore Hot Deals", heroBtn2: "Call Us Now",
-                offersTitle: "Exclusive Hot Deals", offersSubtitle: "Book your luxury budget stay at unbeatable prices",
-                cardBtn: "Book Now",
-                dir: "ltr"
-            },
-            fr: {
-                tagline: "Rois des voyages économiques",
-                navHome: "Accueil", navOffers: "Offres", navDest: "Destinations", navContact: "Contact",
-                btnWa: "Réservation",
-                heroBadge: "Évalué 4.2/5 sur Google - Agence Top",
-                heroTitle: 'Envie de voyager? <br><span class="gradient-text">Nemo Tours a la solution!</span>',
-                heroDesc: "Les rois de Charm el-Cheikh, Hurghada, Dahab et la Côte Nord. Hôtels économiques inclus repas et transports.",
-                heroBtn1: "Découvrir les Offres", heroBtn2: "Appelez-nous",
-                offersTitle: "Offres Exclusives", offersSubtitle: "Réservez votre séjour aux meilleurs prix",
-                cardBtn: "Réserver",
-                dir: "ltr"
-            }
-        };
-
-        function setLanguage(lang) {
-            const data = i18n[lang];
-            document.documentElement.dir = data.dir;
-            document.documentElement.lang = lang;
-
-            document.getElementById('tagline').innerText = data.tagline;
-            document.getElementById('nav-home').innerText = data.navHome;
-            document.getElementById('nav-offers').innerText = data.navOffers;
-            document.getElementById('nav-destinations').innerText = data.navDest;
-            document.getElementById('nav-contact').innerText = data.navContact;
-            document.getElementById('btn-whatsapp').innerText = data.btnWa;
-            document.getElementById('hero-badge').innerText = data.heroBadge;
-            document.getElementById('hero-title').innerHTML = data.heroTitle;
-            document.getElementById('hero-desc').innerText = data.heroDesc;
-            document.getElementById('hero-btn1').innerText = data.heroBtn1;
-            document.getElementById('hero-btn2').innerText = data.heroBtn2;
-            document.getElementById('offers-title').innerText = data.offersTitle;
-            document.getElementById('offers-subtitle').innerText = data.offersSubtitle;
-
-            ['card-btn', 'card-btn2', 'card-btn3'].forEach(id => {
-                document.getElementById(id).innerText = data.cardBtn;
-            });
-
-            // Update button styles
-            ['ar', 'en', 'fr'].forEach(l => {
-                const btn = document.getElementById(`btn-${l}`);
-                if(l === lang) {
-                    btn.className = "px-2 py-1 rounded-lg bg-brand-orange text-white";
-                } else {
-                    btn.className = "px-2 py-1 rounded-lg text-slate-400 hover:text-white";
-                }
-            });
-        }
-
-        // ChatBot Toggle
-        function toggleChat() {
-            const win = document.getElementById('chat-window');
-            win.classList.toggle('hidden');
-            win.classList.toggle('flex');
-        }
-
-        // ChatBot Messaging
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const messages = document.getElementById('chat-messages');
-            const txt = input.value.trim();
-            if(!txt) return;
-
-            // User Message
-            messages.innerHTML += `<div class="bg-brand-orange/20 border border-brand-orange/40 p-3 rounded-2xl rounded-tl-none text-white max-w-[85%] self-end ms-auto">${txt}</div>`;
-            input.value = '';
-
-            // Bot Auto Reply Logic
-            setTimeout(() => {
-                let reply = "أهلاً بك! يمكنك التواصل مباشرة مع خدمة العملاء على 01006162892 أو عبر واتساب للحصول على تفاصيل أسرع.";
-                if(txt.includes("سعر") || txt.includes("عروض") || txt.includes("price")) {
-                    reply = "عروضنا تبدأ من 4,300 جنيه لشرم الشيخ والبحر الأحمر مع كامل الوجبات!";
-                } else if(txt.includes("مكان") || txt.includes("عنوان") || txt.includes("location")) {
-                    reply = "فرعنا في الإسكندرية: 78 شارع عبد السلام عارف، بجوار مستشفى إبراهيم عبيد، سابا باشا.";
-                }
-                messages.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl rounded-tr-none text-slate-200 max-w-[85%]">${reply}</div>`;
-                messages.scrollTop = messages.scrollHeight;
-            }, 600);
- async function loadOffers() {
-  try {
-    // بيجيب البيانات اللي العميل دخلها عبر Pages CMS
-    const response = await fetch('./content/offers.json');
-    const offers = await response.json();
+  <!-- Main Content Area -->
+  <main class="max-w-4xl mx-auto w-full p-4 flex-grow">
     
-    // اعرض العروض جوة الصفحة تلقائياً
-    console.log("العروض الجديدة:", offers);
-    // هنا بتقدر تعمل loop وتطبع الرحلات في الـ HTML
-  } catch (error) {
-    console.log("لسه مفيش عروض اتضافت أو الملف مش موجود");
-  }
-}
+    <!-- Section: Offers Display -->
+    <section class="my-6">
+      <h2 class="text-xl font-bold text-slate-100 mb-4 border-r-4 border-brand-orange pr-3">أحدث عروض الرحلات</h2>
+      
+      <!-- Container where Pages CMS offers will automatically render -->
+      <div id="offers-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Placeholder while loading or if no data exists -->
+        <div class="col-span-full bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 text-center text-slate-400">
+          جاري تحميل العروض الحالية...
+        </div>
+      </div>
+    </section>
 
-// load data
-loadOffers();
-</script>
+  </main>
+
+  <!-- Script Area -->
+  <script>
+    // ChatBot Messaging Function
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const messages = document.getElementById('chat-messages');
+      if (!input || !messages) return;
+      
+      const txt = input.value.trim();
+      if (!txt) return;
+
+      // User Message UI
+      messages.innerHTML += `<div class="bg-brand-orange/20 border border-brand-orange/40 p-3 rounded-2xl rounded-tl-none text-white my-2">${txt}</div>`;
+      input.value = '';
+
+      // Bot Auto Reply Logic
+      setTimeout(() => {
+        let reply = "أهلاً بك! يمكنك التواصل مباشرة مع خدمة العملاء على 01006162892 أو عبر واتساب للحصول على تفاصيل أسرع.";
+        if (txt.includes("سعر") || txt.includes("عروض") || txt.includes("price")) {
+          reply = "عروضنا تبدأ من 4,300 جنيه لشرم الشيخ والبحر الأحمر مع كامل الوجبات!";
+        } else if (txt.includes("مكان") || txt.includes("عنوان") || txt.includes("location")) {
+          reply = "فرعنا في الإسكندرية: 78 شارع عبد السلام عارف، بجوار مستشفى إبراهيم عبيده، سابا باشا.";
+        }
+        messages.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl rounded-tr-none text-slate-200 max-w-[85%] my-2">${reply}</div>`;
+        messages.scrollTop = messages.scrollHeight;
+      }, 600);
+    }
+
+    // Fetch & Display Offers from Pages CMS JSON
+    async function loadOffers() {
+      const container = document.getElementById('offers-container');
+      if (!container) return;
+
+      try {
+        const response = await fetch('./content/offers.json');
+        if (!response.ok) throw new Error("No data found");
+        
+        const offers = await response.json();
+        
+        // Render Offers if array has items
+        if (Array.isArray(offers) && offers.length > 0) {
+          container.innerHTML = offers.map(offer => `
+            <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg text-white flex flex-col justify-between hover:border-slate-600 transition">
+              <div>
+                ${offer.image ? `<img src="${offer.image}" alt="${offer.title}" class="w-full h-48 object-cover rounded-xl mb-4">` : ''}
+                <h3 class="text-xl font-bold text-brand-orange mb-2">${offer.title}</h3>
+                <p class="text-green-400 font-bold text-lg mb-2">${offer.price} جنيه</p>
+                <p class="text-slate-300 text-sm leading-relaxed">${offer.desc}</p>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          container.innerHTML = `
+            <div class="col-span-full bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 text-center text-slate-400">
+              لا توجد عروض مسجلة حالياً. استخدم لوحة التحكم لإضافة عرض جديد.
+            </div>`;
+        }
+      } catch (error) {
+        container.innerHTML = `
+          <div class="col-span-full bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 text-center text-slate-400">
+            أضف أول عرض لك من لوحة التحكم Pages CMS لتراه هنا فوراً!
+          </div>`;
+      }
+    }
+
+    // Execute on page load
+    loadOffers();
+  </script>
 </body>
 </html>
