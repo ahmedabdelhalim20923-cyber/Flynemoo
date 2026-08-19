@@ -1,0 +1,20 @@
+media:
+  input: images
+  output: /images
+
+content:
+  - name: offers
+    label: عروض الرحلات
+    type: collection
+    path: content/offers.json
+    format: json
+    fields:
+      - name: title
+        label: اسم الرحلة
+        type: string
+      - name: price
+        label: السعر
+        type: string
+      - name: desc
+        label: تفاصيل العرض
+        type: string
