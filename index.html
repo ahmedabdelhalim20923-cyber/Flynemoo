@@ -75,44 +75,57 @@
     }
 
     // Fetch & Display Offers from Pages CMS JSON
-    async function loadOffers() {
-      const container = document.getElementById('offers-container');
-      if (!container) return;
+    // Fetch & Display All Offers from Pages CMS Folder
+async function loadOffers() {
+  const container = document.getElementById('offers-container');
+  if (!container) return;
 
-      try {
-        const response = await fetch('./content/offers.json');
-        if (!response.ok) throw new Error("No data found");
-        
-        const offers = await response.json();
-        
-        // Render Offers if array has items
-        if (Array.isArray(offers) && offers.length > 0) {
-          container.innerHTML = offers.map(offer => `
-            <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg text-white flex flex-col justify-between hover:border-slate-600 transition">
-              <div>
-                ${offer.image ? `<img src="${offer.image}" alt="${offer.title}" class="w-full h-48 object-cover rounded-xl mb-4">` : ''}
-                <h3 class="text-xl font-bold text-brand-orange mb-2">${offer.title}</h3>
-                <p class="text-green-400 font-bold text-lg mb-2">${offer.price} جنيه</p>
-                <p class="text-slate-300 text-sm leading-relaxed">${offer.desc}</p>
-              </div>
-            </div>
-          `).join('');
-        } else {
-          container.innerHTML = `
-            <div class="col-span-full bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 text-center text-slate-400">
-              لا توجد عروض مسجلة حالياً. استخدم لوحة التحكم لإضافة عرض جديد.
-            </div>`;
+  try {
+    const res = await fetch('https://api.github.com/repos/ahmedabdelhalim20923-cyber/Flynemoo/contents/content/offers');
+    if (!res.ok) throw new Error();
+    
+    const files = await res.json();
+    let allOffers = [];
+
+    for (let file of files) {
+      if (file.name.endsWith('.json')) {
+        const itemRes = await fetch(file.download_url);
+        if (itemRes.ok) {
+          const itemData = await itemRes.json();
+          allOffers.push(itemData);
         }
-      } catch (error) {
-        container.innerHTML = `
-          <div class="col-span-full bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 text-center text-slate-400">
-            أضف أول عرض لك من لوحة التحكم Pages CMS لتراه هنا فوراً!
-          </div>`;
       }
     }
 
-    // Execute on page load
-    loadOffers();
+    if (allOffers.length > 0) {
+      container.innerHTML = allOffers.map(offer => {
+        const title = offer['اسم الرحلة'] || offer.title || 'عرض رحلة';
+        const price = offer['السعر'] || offer.price || '';
+        const desc = offer['تفاصيل العرض'] || offer.desc || '';
+        const img = offer.image || offer.img || '';
+
+        return `
+          <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-lg text-white flex flex-col justify-between hover:border-slate-600 transition">
+            <div>
+              ${img ? `<img src="${img}" alt="${title}" class="w-full h-48 object-cover rounded-xl mb-4">` : ''}
+              <h3 class="text-xl font-bold text-brand-orange mb-2">${title}</h3>
+              ${price ? `<p class="text-green-400 font-bold text-lg mb-2">${price} جنيه</p>` : ''}
+              <p class="text-slate-300 text-sm leading-relaxed">${desc}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+      return;
+    }
+  } catch (e) {
+    container.innerHTML = `
+      <div class="col-span-full bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 text-center text-slate-400">
+        أضف أول عرض لك من لوحة التحكم Pages CMS لتراه هنا فوراً!
+      </div>`;
+  }
+}
+
+loadOffers();
   </script>
 </body>
 </html>
