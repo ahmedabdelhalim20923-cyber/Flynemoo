@@ -1,13 +1,12 @@
 media:
-  input: images
-  output: /images
+  input: public/media
+  output: /media
 
 content:
   - name: offers
     label: عروض الرحلات
-    type: collection
+    type: file
     path: content/offers.json
-    format: json
     fields:
       - name: title
         label: اسم الرحلة
@@ -17,4 +16,4 @@ content:
         type: string
       - name: desc
         label: تفاصيل العرض
-        type: string
+        type: rich-text
